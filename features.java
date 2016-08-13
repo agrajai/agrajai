@@ -2,9 +2,9 @@ package com.tgt.qa.tests.csrportal;
 
 public interface features 
 {
-	public abstract void tyres();
+	abstract void tyres();
 	abstract void chain();
-	public void brakes();
+	void brakes();
 	void bell();
 	void seat();
 	void paddle();

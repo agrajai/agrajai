@@ -1,5 +1,12 @@
 package com.tgt.qa.tests.csrportal;
 
+import java.util.LinkedList;
+import java.util.Queue;
+import java.util.Stack;
+
+import com.tgt.qa.tests.csrportal.theStack.stackArrayImplementation;
+
+
 public class Trees 
 {
 	Node root;
@@ -22,21 +29,27 @@ public class Trees
 	public static void main(String[] s)
 	{
 		Trees t = new Trees();
-		t.createBST(90);
-		t.createBST(50);
 		t.createBST(20);
-		t.createBST(75);
-		t.createBST(66);
-		t.createBST(150);
-		t.createBST(80);
-		t.createBST(68);
-		
+		t.createBST(10);
+		t.createBST(40);
+		t.createBST(6);
+		t.createBST(8);
+		t.createBST(28);
+		t.createBST(36);
+		t.createBST(4);
+		t.createBST(5);
+		t.createBST(7);
+		t.createBST(9);
+		t.createBST(25);
+		t.createBST(29);
+		t.createBST(35);
+		t.createBST(37);
 		
 //		System.out.println("Printing PRE ORDER TRAVERSAL");
 //		t.preOrderTraversal(t.root);
 //		
-		System.out.print("Printing IN ORDER TRAVERSAL before deletion:");
-		t.inOrderTraversal(t.root);
+//		System.out.print("Printing IN ORDER TRAVERSAL before deletion:");
+//		t.inOrderTraversal(t.root);
 		
 //		t.removeNode(t.root, 50);
 		
@@ -48,9 +61,12 @@ public class Trees
 //		t.postOrderTraversal(t.root);
 		
 //		System.out.println("iS BST: " + t.isBinarySearchTree(t.root, Integer.MIN_VALUE, Integer.MAX_VALUE));
-		System.out.println("\nLCA: : " + t.findLCA(t.root, 68, 80).data);
+//		System.out.println("\nLCA: : " + t.findLCA(t.root, 68, 80).data);
+//		
+//		System.out.println("\nMax depth: : " + t.maxDepth(t.root));
 		
-		System.out.println("\nMax depth: : " + t.maxDepth(t.root));
+//		t.BFSPrintStairs(t.root);
+		t.flattenTree(t.root);
 		
 	}
 	
@@ -96,7 +112,7 @@ public class Trees
 			return;
 		}
 		inOrderTraversal(root.left);
-		System.out.print(", " + root.data);
+		System.out.print(root.data +", ");
 		inOrderTraversal(root.right);
 	}
 	
@@ -227,39 +243,41 @@ public class Trees
 		return n;
 	}
 	
-	public Node findLCA(Node root, int v1, int v2)
+	public Node findLca(Node node, int t1, int t2) 
 	{
-//	    if(node == null) {
-//	        return -1;
-//	    }
-//	    if(node.data > t2 && node.data > t1) {
-//	        // both targets are left
-//	        return findLCA(node.left, t1, t2);
-//	    } else if (node.data < t2 && node.data < t1) {
-//	        // both targets are right
-//	        return findLCA(node.right, t1, t2);
-//	    } else {
-//	        // either we are diverging or both targets are equal
-//	        // in both cases so we've found the LCA
-//	        // check for actual existence of targets here, if you like
-//	        return node.data;
-//	    }
+	    if(node == null) 
+	    {
+	        return null;
+	    }
+	    
+	    if(node.data > t2 && node.data > t1) 
+	    {
+	        // both targets are left
+	        return findLca(node.left, t1, t2);
+	    } 
+	    else if (node.data < t2 && node.data < t1) 
+	    {
+	        // both targets are right
+	        return findLca(node.right, t1, t2);
+	    }
+	    else 
+	    {
+	        return node;
+	    }
+	}
+	
+	public Node LCABinaryTree(Node root, int x, int y)
+	{
+		if (root == null)
+			return null;
 		
-		if (root==null)
-            return null;
-        if (root.data==v1 || root.data==v2)
-        {
-            return root;
-        }
-        
-        Node left = findLCA(root.left,v1,v2);
-        Node right = findLCA(root.right,v1,v2);
-
-        if(left!=null && right!=null)
-            return root;
-        else if (left!=null)
-             return left;
-        else  return right;
+		Node left = LCABinaryTree(root.left, x, y);
+		Node right = LCABinaryTree(root.left, x, y);
+		
+		if (left != null && right != null)
+			return root;
+		
+		return left != null ? left: right;
 	}
 	
 	public int maxDepth(Node root)
@@ -281,4 +299,196 @@ public class Trees
 			return rDepth + 1;
 		}
 	}
+	
+	public void BFSPrintStairs(Node root)
+	{
+		theQueue q = new theQueue();
+		theQueue.queueArrayImplementation qArr = q.new queueArrayImplementation(40);
+		
+		qArr.enqueue(root);
+		
+		while (qArr.noofelements != 0)
+		{
+			int levelsize = qArr.noofelements;
+ 			
+			while(levelsize > 0)
+			{
+				Node temp = (Node) qArr.dequeue();
+				System.out.print(temp.data + " ");
+
+				if (temp.left != null)
+				{
+					qArr.enqueue(temp.left);
+				}
+				
+				if (temp.right != null)
+				{
+					qArr.enqueue(temp.right);
+				}
+				
+				levelsize--;
+			}
+			
+			System.out.println();
+		}
+	}
+	
+	public void preOrderIterative(Node root)
+	{
+		if (root == null)
+			return;
+		
+		Stack<Node> s = new Stack<Node>();
+		
+		s.push(root);
+		
+		while (!s.isEmpty())
+		{
+			root = s.pop();
+			System.out.println(root.data);
+
+			if (root.right != null)
+				s.push(root.right);
+			
+			if (root.left != null)
+				s.push(root.left);
+		}
+	}
+	
+	public void inOrderIterative(Node root)
+	{
+		if (root == null)
+			return;
+		
+		Stack<Node> s = new Stack<Node>();
+		
+		//go to the left leaf node
+		while (root != null)
+		{
+			s.push(root);
+			root = root.left;
+		}
+		
+		while (!s.isEmpty())
+		{
+			root = s.pop();
+			System.out.println(root.data);
+			
+			if (root.right != null)
+			{
+				root = root.right;
+			}
+			
+			//go to the left most Node
+			while (root != null)
+			{
+				s.push(root);
+				root = root.left;
+			}
+		}
+	}
+	
+	public void postOrderIteration(Node root)
+	{
+		if (root == null)
+			return;
+		
+		Stack<Node> s = new Stack<Node>();
+		
+		while (root != null)
+		{
+			s.push(root);
+			root = root.left;
+		}
+		
+		while (!s.isEmpty())
+		{
+			root = s.pop();
+			System.out.println(root.data);
+			
+			if (root.right != null)
+				root = root.right;
+			
+			
+		}
+	}
+	
+	public boolean isSubTree(Node root1, Node root2)
+	{
+		if (root1 == null)
+			return false;
+		
+		if (root2 == null)
+			return true;
+		
+		if (areIdentical(root1, root2))
+			return false;
+		
+		return isSubTree(root1.left, root2) || isSubTree(root1.right, root2);
+		
+	}
+	
+	private boolean areIdentical(Node root1, Node root2)
+	{
+		if (root1 == null && root2 == null)
+			return true;
+		
+		if (root1 == null || root2 == null)
+			return false;
+		
+		return ((root1.data == root2.data) && 
+				areIdentical(root1.left, root2.left) &&
+				areIdentical(root1.right, root2.right));
+	}
+	
+	public Node flattenTree(Node root)
+	{
+		if (root == null)
+		{
+			return null;
+		}
+		
+		Queue<Node> q = new LinkedList();
+		
+		Node head = root;
+		Node curr = head;
+		Node prev;
+		
+		q.add(root);
+		
+		while (!q.isEmpty())
+		{
+			Node n = q.remove();
+			
+			prev = curr;
+			curr.right = n;
+			curr = curr.right;
+			curr.left = prev;
+			
+			if (n.left != null)
+				q.add(n.left);
+			
+			if (n.right != null)
+				q.add(n.right);
+		}
+		
+		return head.right;
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

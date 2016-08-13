@@ -2,7 +2,7 @@ package com.tgt.qa.tests.csrportal;
 
 public class sportsBicycles extends abstractBicycle
 {
-	public static void draw()
+	public void draw()
 	{
 		System.out.print("i am in child class");
 	}

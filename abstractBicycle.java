@@ -9,9 +9,9 @@ public abstract class abstractBicycle implements features
 		System.out.print("cadence");
 	}
 	
-	public static void draw()
+	protected void draw()
 	{
-		System.out.print("i am in abstract base class");
+		System.out.print("i am in abstract base class - Private in Super class");
 	}
 
 	@Override

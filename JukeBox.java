@@ -82,7 +82,7 @@ public class JukeBox
 		
 		public String getNextSong()
 		{
-			return pL.newQueueofArray.peek();
+			return (String) pL.newQueueofArray.peek();
 		}
 
 		public PlayList getpL() {

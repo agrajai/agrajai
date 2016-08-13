@@ -15,6 +15,8 @@ public class SearchAndSorting
 		
 		System.out.println(search.binarySearchItr(new int[] {1,2,3,4,5,6,7,8,9,10}, 10));
 		System.out.println(search.binarySearchRecurrsive(new int[] {1,2,3,4,5,6,7,8,9,10}, 10, 0, 9));
+		search.insertionSort(new int[] {5,2,4,6,1,3});
+		
 
 	}
 	
@@ -61,6 +63,30 @@ public class SearchAndSorting
 			return arr[mid];
 
 		}
+	
+		public void insertionSort(int[] a)
+		{
+			if (a.length == 0)
+				return;
+			
+			for (int i = 1; i < a.length; i++) 
+			{
+				int key = a[i];
+				int j = i;
+				
+				while (j > 0 && key < a[j-1])
+				{
+					a[j] = a[j-1];
+					j--;
+				}
+				
+				a[j] = key;			
+			}
+			
+			for (int i = 0; i < a.length; i++) 
+			{
+				System.out.println(a[i]);
+			}
+		}
 	}
-
 }

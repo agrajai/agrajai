@@ -1,14 +1,14 @@
 package com.tgt.qa.tests.csrportal;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Hashtable;
 import java.util.Iterator;
 import java.util.List;
-
-import org.apache.commons.lang.math.RandomUtils;
-
-import com.tgt.qa.tests.csrportal.theStack.stackArrayImplementation;
+import java.util.Map;
+import java.util.Map.Entry;
 
 public class Testing
 {
@@ -20,55 +20,68 @@ public class Testing
 //	}
 	
 	@SuppressWarnings({ "unchecked", "rawtypes" })
-	public static void main(String[] args) 
+	public static void main(String[] args) throws Exception 
 	{
-		List bicycles = new ArrayList();
-		
-		features kidsBycycle = new kidsBicycles();
-		features sportsBycycle = new sportsBicycles();
-		
-		// Run time polymorphism -- Method overriding
-		bicycles.add(kidsBycycle);
-		bicycles.add(sportsBycycle);
-		
-		for(Iterator itr = bicycles.iterator(); itr.hasNext();)
-		{
-			features f = (features) itr.next();
-			f.tyres();
-		}
-		
-		
-		// Run time polymorphism - Method overriding
-		abstractBicycle sBike = new sportsBicycles();
-		abstractBicycle kBike = new kidsBicycles();
-
-		sBike.tyres();
-		kBike.tyres();
-		
-		sportsBicycles sBikes = new sportsBicycles();
-		dependencyInjection dependInj = new dependencyInjection();
-		dependInj.setBycycleType(sBikes);
-		dependInj.tyreType();
-		
-
-		
-		//Compile time polymorphism - Method overloading
-		sportsBicycles sBike1 = new sportsBicycles();
-		sBike1.tyres(10);
-		sBike1.tyres("MRF");
-		
-		
-		
-		//Testing t = new Testing();
-		//Testing.testMethods tm = null;//t.new testMethods();
-		//System.out.println(t.refInnerClass());
+//		//Rabin Karp
+//		RabinKarpPatternMatchAlgo rk = new RabinKarpPatternMatchAlgo();
+//		System.out.print("Pattern COUNT : " + rk.patternMatch("abcbedfabcabcabcabc", "abc"));
+//		
+//		
+		//mvc practice
+//		mvcView theView = new mvcView();
+//		new mvcController(theView, new mvcModel());
+//		theView.setVisible(true);
+//		
+//		List bicycles = new ArrayList();
+//		
+//		features kidsBycycle = new kidsBicycles();
+//		features sportsBycycle = new sportsBicycles();
+//		
+//		// Run time polymorphism -- Method overriding
+//		bicycles.add(kidsBycycle);
+//		bicycles.add(sportsBycycle);
+//		
+//		for(Iterator itr = bicycles.iterator(); itr.hasNext();)
+//		{
+//			features f = (features) itr.next();
+//			f.tyres();
+//		}
+//		
+//		
+//		// Run time polymorphism - Method overriding
+//		abstractBicycle sBike = new sportsBicycles();
+//		abstractBicycle kBike = new kidsBicycles();
+//		abstractBicycle grandbicycles = new bicycles();
+//		
+//		sBike.tyres();
+//		kBike.tyres();
+//		//kBike.draw();
+//		
+//		grandbicycles.draw();
+//		
+//		sportsBicycles sBikes = new sportsBicycles();
+//		dependencyInjection dependInj = new dependencyInjection();
+//		dependInj.setBycycleType(sBikes);
+//		dependInj.tyreType();
+//		
+//
+//		
+//		//Compile time polymorphism - Method overloading
+//		sportsBicycles sBike1 = new sportsBicycles();
+//		sBike1.tyres(10);
+//		sBike1.tyres("MRF");
+//		
+//		
+//		
+//		Testing t = new Testing();
+//		Testing.testMethods tm = null;//t.new testMethods();
 //		System.out.print(testMethods.str);
-		
-		//Palidrome o/p
-//		System.out.println(testMethods.palindrome("dfd"));
-		
-		//findPrime
-		System.out.println("Prime?: "+ testMethods.findPrime(31));
+//		
+//		//Palidrome o/p
+//		System.out.println(tm.palindrome("dfd"));
+//		
+//		//findPrime
+//		System.out.println("Prime?: "+ testMethods.findPrime(31));
 //		
 //		//reverse array
 //		int[] outArr = tm.reverseArray(new int[] {9,8,7,6,5});
@@ -102,28 +115,58 @@ public class Testing
 //		System.out.println("Excel Column:: " + tm.fetchExcelColNum("AE"));
 //		System.out.println("Longest Palindrome:: " + testMethods.longestPalindrome("MADAMADAAM"));
 //		
-//		tm.addNumbers(3, 4);
-//		tm.multiplynumbers(3, 4);
-//		tm.divide(10, 2);
 //		System.out.println("Integer to String: " + tm.convertIntToString(1234));
-		
+//		
 //		System.out.println(String.format("factorial recurr:  %s", testMethods.factorialRecurr(7)));
 //		System.out.println(String.format("factorial itr:  %s", testMethods.factorialItr(7)));
 //		System.out.println(String.format("Remove dupe chars:  %s", testMethods.removeDuplicateChars("sshgjii")));
 //		System.out.println(String.format("Repeat Chars :  %s", testMethods.countRepeatChars("aaabbccc%%")));
 //		System.out.println(String.format("SubsString prescence count:  %s", testMethods.countSubStringRepeat("abcdabcdabcd", "abcd")));
-//		System.out.println(String.format("Smart SubsString :  %s", testMethods.first30CharsWithoutCuttingAnyWords("Featuring " +
-//				"stylish rooms and moorings for recreation boats, " +
-//				"Room Mate Aitana is a designer hotel built in 2013 " +
-//				"on an island in the IJ River in Amsterdam.")));
+//		System.out.println(String.format("Smart SubsString :  %s", testMethods.countMaxCharOcc("Feeeeaturiing")));
+////		+
+////				"stylish rooms and moorings for recreation boats, " +
+////				"Room Mate Aitana is a designer hotel built in 2013 " +
+////				"on an island in the IJ River in Amsterdam.")));
+////		
+////		testMethods.strPnC("1234", 0, 4);
+////		
+////		System.out.println("is it a balanced braces expression:? " + testMethods.areBracketsBalanced("(A+B) []{+ (F + 0)"));
+////		
+////		testMethods.inverseDeterminant(testMethods.prepDeterminant());
+////		testMethods.inverseDeterminantNoXtraSpace((testMethods.prepDeterminant()));
+////		System.out.println(String.format("Int to String:%s", testMethods.returnIntAsString(-2345)));
+////		
+////		int[] array = new int[]{100, 1, 0, 3, 4, 5, 6, 7, 90, 10};
+////
+////		System.out.println(Arrays.toString(rotateArrayByN(array, 2)));
+////		findIndexofSumof2NumberinAnArray(array, 9);
+////		
+////		System.out.println("Match Count:? " + testMethods.subsStringPatternMatch("rajesh went to barber show barber for hair trim along with jai. Jai also met barber and had a cut.", "barber"));
+////		Hashtable<String, String> h = new  Hashtable<String, String>();
+////		
+////		h.put("0", "Hi");
+////		h.put("1", "There");
+////		h.put("2", "dog");
+////		h.put("3", "holla");
+////		
+////		System.out.println("String break: " + testMethods.stringBreakDicMatch("HiTheredogholla", h));
+////		
+////		testMethods.findIndexofSumof2NumberinAnArray(array, 100);
+//		
+//		testMethods.sortStringArrayListAnagramToEachOther(new String[] {"abc", "bcd", "nhg", "abc", "rr", "abc"});
+//		
+//		System.out.println(testMethods.insertFiller("http://bing.com?q1=t t ting&q2=he ll y he ", "%20"));
+//		testMethods.findAnagrams();
+//		testMethods.romantoInt("IV");
+//		testMethods.romantoInt("V");
+//		testMethods.romantoInt("VI");
+//		testMethods.romantoInt("IXV");
+//		testMethods.romantoInt("XV");
+//		testMethods.romantoInt("DCX");
+//		testMethods.romantoInt("ABC");
 		
-//		testMethods.strPnC("1234", 0, 4);
-		
-//		System.out.println("is it a balanced braces expression:? " + testMethods.areBracketsBalanced("(A+B) []{+ (F + 0)"));
-		
-//		testMethods.inverseDeterminant(testMethods.prepDeterminant());
-//		testMethods.inverseDeterminantNoXtraSpace((testMethods.prepDeterminant()));
-		System.out.println(String.format("Int to String:%s", testMethods.returnIntAsString(-2345)));
+//		testMethods.substringCheck();
+		System.out.println(testMethods.findLoser(new String[] {"man","hen","pen","sen","len"}, 2));
 	}
 	
 	public static class testMethods extends Testing
@@ -144,7 +187,7 @@ public class Testing
 //			// TODO Auto-generated method stub
 //			return str;
 //		}
-		public static boolean palindrome(String s)
+		public boolean palindrome(String s)
 		{
 			if (s == null || s.length() == 0)
 				return false;
@@ -155,13 +198,9 @@ public class Testing
 			int j = s.length() - 1;
 			char[] c = s.toCharArray();
 			
-			for (int i=0; i < j; i++) 
+			for (int i=0; i < j; i++, j--) 
 			{
-				if (c[i] == c[j])
-				{
-					j--;
-				}
-				else 
+				if (c[i] != c[j])
 				{
 					return false;
 				}
@@ -177,7 +216,7 @@ public class Testing
 				return false;	
 			}
 			
-			for (int i = 2; i*i < n; i++) 
+			for (int i = 2; Math.pow(i, 2) < n; i++) 
 			{
 				if (n % i == 0)
 				{
@@ -430,6 +469,21 @@ public class Testing
 			return out;
 		}
 		
+		
+		public static int returnStringAsInt(String str)
+		{
+			int i = 0;
+			int num = 0;
+			
+			while (i < str.length())
+			{
+				num *= 10;
+				num += str.charAt(i++) - '0';
+			}
+			
+			return num;
+		}
+		
 		public String fetchExcelColName(int col)
 		{
 			String excelCol = "";
@@ -440,7 +494,7 @@ public class Testing
 			{
 				int mod = (col % 26);
 				excelCol = String.valueOf(Character.toChars(mod + 'A')) + excelCol;
-				col = (col/26) -1 ;
+				col = (col/26) - 1 ;
 			}
 			return excelCol;
 		}
@@ -608,7 +662,9 @@ public class Testing
 					i++;
 					j++;
 					if (j == s2.length())
+					{
 						found=true;
+					}
 				}
 
 				if (found)
@@ -620,6 +676,82 @@ public class Testing
 				found=false;
 			}
 					
+			return count;
+		}
+
+		
+		public static int subsStringPatternMatch(String s, String sub)
+		{
+			if ((s == null || s.isEmpty()) && (sub == null || sub.length() == 0))
+			{
+				return 0;
+			}
+			
+			int i = 0;
+			int end = 0;
+			int offset = 0;
+			int patternLen = sub.length() - 1;
+			int count = 0;
+			boolean match = false;
+			boolean noMatchSoFar = false;
+			
+			while (end + offset < (s.length() - sub.length()))
+			{
+				end += offset;
+				
+				i = patternLen;
+				while (patternLen >= 0)
+				{
+					char mainStr = s.charAt(end + i);
+					char patternStr = sub.charAt(patternLen);
+					
+					if (mainStr == patternStr)
+					{
+						if (!noMatchSoFar)
+						{
+							match = true;
+							i--;
+						}
+						else
+						{
+							break;
+						}
+					}
+					else
+					{
+						if (!match)
+							noMatchSoFar = true;
+						else
+							break;
+					}
+					
+					if (patternLen != 0)
+						patternLen--;
+					
+					if (patternLen == 0)
+						break;
+				}
+				
+				if (match && patternLen == 0) //case of 100% match
+				{
+					count++;
+					offset = sub.length() - 1;
+				}
+				else if (!match && patternLen == 0)//no match at all
+				{
+					offset = sub.length() - 1;
+				}
+				else //1st match
+				{
+					offset = (sub.length() - 1) - patternLen;
+				}
+				
+				//reset variables
+				patternLen = sub.length() - 1; //reset patternLen
+				match = false;
+				noMatchSoFar = false;
+			}
+			
 			return count;
 		}
 		
@@ -669,7 +801,7 @@ public class Testing
 				c[start] = c[i];
 				c[i] = temp;
 				
-				strPnC(new String(c), start+1, end);
+				strPnC(new String(c), start + 1, end);
 				
 				char temp1 = c[start];
 				c[start] = c[i];
@@ -701,11 +833,12 @@ public class Testing
 				
 				if (j <= 30)
 					out += s.substring(i,j) + ' ';
+				else
+					break;
 				
 				j++;
 				i = j;
 			}
-			
 		}
 		
 		return out;
@@ -722,7 +855,7 @@ public class Testing
 //	foo("AAAAAAeeeeeeeee") returns 'e'
 //	foo("a         ") returns 'a'
 
-	public char countMaxCharOcc(String s)
+	public static char countMaxCharOcc(String s)
 	{
 	    if (s == null || s.length() == 0)
 	    {
@@ -746,9 +879,9 @@ public class Testing
 	                maxchar = c;
 	            }
 	        }
-	     }
+	    }
 	     
-	     return maxchar;
+	    return maxchar;
 	}
 	
 	public static boolean areBracketsBalanced(String s)
@@ -784,7 +917,7 @@ public class Testing
 			{
 				if (!stk.isEmpty())
 				{
-					char openBracket = stk.peek();
+					char openBracket = (char) stk.peek();
 					char closeBracket = c[i];
 					
 					int j = 0;
@@ -889,11 +1022,431 @@ public class Testing
 		{
 			for (int j = 0; j < coln; j++) 
 			{
-				
 				a[i][j] = i + j;
 			}
 		}
 		
 		return a;
+	}
+	
+	public static int[] rotateArrayByN(int[] array, int n) 
+	{
+		int rotation = n > array.length ? n % array.length : n;
+
+		for (int i = array.length-rotation-1; i >-1; i--) 
+		{
+			int newPosition = i + rotation >= array.length ? i + rotation - array.length : i + rotation;
+			int oldValue = array[newPosition];
+			array[newPosition] = array[i];
+			array[i] = oldValue;
+		}
+		return array;
+		
+		
+		//reverse array by (arr, 0, n-1)
+		//reverse array by (arr, 0, k-1)
+		//reverse array by (arr, k, n-1)
+	}
+	
+	public static void findIndexofSumof2NumberinAnArray(int[] a, int sum)
+	{
+		//Store array into an hashtable
+		Hashtable<Integer, Integer> h = new Hashtable<Integer, Integer>();
+		for (int i = 0; i < a.length; i++)
+		{
+			h.put(a[i], i);
+		}
+		
+		//Use storage to find Sum - number and pull the index
+		for (int i = 0; i < a.length; i++) 
+		{
+			if (h.contains(sum - a[i]))
+				System.out.println(String.format("Indexes: %s and %s of sum of value %s+%s", i, a[i], sum - a[i], h.get(sum - a[i])));
+		}
+	}
+	
+	public static String stringBreakDicMatch(String input, Hashtable h)
+	{
+		if (h.contains(input))
+		{
+			return input;
+		}
+		
+		for (int i = 1; i < input.length(); i++) 
+		{
+			String prefix = input.substring(0, i);
+			
+			if (h.contains(prefix))
+			{
+				String suffix = input.substring(i, input.length());
+				String remaining = stringBreakDicMatch(suffix, h);
+				
+				if (remaining != null)
+				{
+					return prefix + ',' + remaining;
+				}
+			}
+		}
+		
+		return null;
+	}
+	
+	
+	@SuppressWarnings("null")
+	public static void sortStringArrayListAnagramToEachOther(String[] s)
+	{
+		if (s == null || s.length == 0)
+		{
+			return;
+		}
+		
+		//Use Merge Sort and compare the string array elements to each other whether they are <, >, =(anagram)
+		
+		int mid = (s.length) /2;
+		String[] left = new String[mid];
+		String[] right = new String[s.length - mid];
+		
+		for (int i = 0; i < mid; i++) 
+		{
+			left[i] = s[i];
+		}
+		
+		for (int i = 0; i < s.length - mid; i++) 
+		{
+			right[i] = s[mid + i];
+		}
+		
+		sortStringArrayListAnagramToEachOther(left);
+		sortStringArrayListAnagramToEachOther(right);
+		
+		merge(left, right, s);
+	}
+	
+	private static void merge(String[] a, String[] b, String[] out)
+	{
+		int i = 0, j = 0, k = 0;
+		
+		while (i < a.length && j < b.length)
+		{
+			if (isAnagram(a[i], b[j]).equals("anagram"))
+			{
+				out[k] = a[i++];
+				out[k] = b[j++];
+			}
+			else if (isAnagram(a[i], b[j]).equals("less"))
+			{
+				out[k] = a[i++];
+			}
+			else
+			{
+				out[k] = b[j++];
+			}
+			
+			k++;
+		}
+		
+		for (int k2 = 0; k2 < out.length; k2++) {
+			
+			System.out.print(out[k2]);
+			
+		}
+	}
+	
+	private static String isAnagram(String a, String b)
+	{
+		if (a.length() == 0 || b. length() == 0)
+		{
+			return "empty";
+		}
+		
+		int a1 = 0;
+		int b1 = 0;
+		
+		for (int i = 0; i < a.length(); i++) 
+		{
+			a1 += a.charAt(i);			
+		}
+			
+		for (int i = 0; i < b.length(); i++) 
+		{
+			b1 += b.charAt(i);			
+		}
+		
+		if (a1 == b1)
+			return "anagram";
+		else if (a1 < b1)
+			return "less";
+		else
+			return "more";
+	}
+	
+	public String reverse(String input)
+	{
+	    if (input == null || input.length() == 0)
+	    {
+	        return "Please provide a String";
+	    }
+	    
+	    String[] strArray = input.split(" ");
+	    String out = "";
+	    
+	    for (int i = strArray.length - 1; i > 0; i--)
+	    {
+	        out += strArray[i] + ' ';
+	    }
+	    
+	    return out;
+	}
+	
+	public static String insertFiller(String input, String filler)
+	{
+		if (input == null ||input.length() == 0)
+		{
+			return "String input";
+		}
+		
+		if (filler == null || filler.length() == 0)
+		{
+			return "String filler";
+		}
+		
+		char[] c = input.toCharArray();
+		
+		//find number of white spaces
+		int i = 0;
+		int count = 0;
+		while (i < c.length)
+		{
+			if (c[i] == 32)
+			{
+				count++;
+			}
+			
+			i++;
+		}
+		
+		int j = 0;
+		int n = 0;
+		char[] out = new char[input.length() + count *2];
+		
+		while (j < c.length)
+		{
+			if(c[j] == 32)
+			{
+				out[n++] = '%';
+				out[n++] = '2';
+				out[n++] = '0';
+			}
+			else
+			{
+				out[n++] = c[j];
+			}
+			
+			j++;
+		}
+		
+		return new String(out, 0, out.length);
+	}
+	
+	
+	public static List<List<String>> findAnagrams()
+	{
+		String[] strs = {"cat", "dog", "tac", "god", "act","mary","Mary","army"};
+		
+	    List<List<String>> result = new ArrayList<List<String>>();
+	    
+	    HashMap<String, ArrayList<String>> map = new HashMap<String, ArrayList<String>>();
+	    
+	    for(String str: strs)
+	    {
+	        char[] arr = str.toCharArray();
+	        
+	        Arrays.sort(arr);
+	        
+	        String ns = new String(arr);
+	 
+	        if(map.containsKey(ns))
+	        {
+	            map.get(ns).add(str);
+	        }
+	        else
+	        {
+	            ArrayList<String> al = new ArrayList<String>();
+	            al.add(str);
+	            map.put(ns, al);
+	        }
+	    }
+	 
+	    for(Map.Entry<String, ArrayList<String>> entry: map.entrySet())
+	    {
+	        Collections.sort(entry.getValue());
+	    }
+	 
+	    result.addAll(map.values());
+	 
+	    return result;
+	}
+	
+	private static int getASCIISum(String s)
+	{
+		int sum = 0;
+		for (int i=0; i < s.length(); i++)
+		{
+			sum += s.charAt(i);
+		}
+		
+		return sum;
+	}
+	
+	public static void romantoInt(String s)
+	{
+		if (s == null || s.length() == 0)
+			return;
+		
+		Hashtable<Character, Integer> ht = getRomanInt();
+		int out = ht.get(s.charAt(s.length() - 1));
+		
+		for (int i = 0; i < s.length() - 1; i++) 
+		{
+			char c = s.charAt(i);
+			if (ht.containsKey(c))
+			{
+				if (ht.get(s.charAt(i)) < ht.get(s.charAt(i+1)))
+				{
+					out -= ht.get(c);
+				}
+				else
+				{
+					out += ht.get(c);
+				}
+			}
+			else
+			{
+				System.out.println("Wrong input: " + s);
+				break;
+			}
+		}
+		
+		System.out.println(String.format("Roman to Int %s : %s",s, out));
+	}
+	
+	private static Hashtable<Character, Integer> getRomanInt()
+	{
+		Hashtable<Character, Integer> h = new Hashtable<Character, Integer>();
+		h.put('I',1);
+		h.put('V',5);
+		h.put('X',10);
+		h.put('L',50);
+		h.put('C',100);
+		h.put('D',500);
+		h.put('M',1000);
+		
+		return h;
+	}
+	
+	public static void substringCheck()
+	{
+		String text = "jaivardhanagarwal";
+		String sub = "waljaivardhanagar";
+	
+		int i=0;
+		int j=0;
+		
+		String concat = sub + sub;
+		
+		while (i < concat.length())
+		{
+			if (text.charAt(j) == concat.charAt(i))
+			{
+				System.out.print(String.format("text=:%s j=:%s  ", text.charAt(j), j));
+				System.out.println(String.format("concat=:%s i=:%s", concat.charAt(i), i));
+				
+				if (j < text.length() - 1)
+					j++;
+				else
+					break;
+			}
+			else
+			{
+				j = 0;
+			}
+			
+			i++;
+		}
+		
+		if (j == text.length() - 1)
+		{
+			System.out.println(i - (text.length() - 1));
+			String str = concat.substring(i - (text.length() - 1), i + 1);
+			System.out.println("str :" + str);
+			System.out.println("Substring Match?:" + text.equals(str));
+		}
+	}
+	
+//	Starting: A B C D E; n=2
+//			1st: A x C D E
+//			2nd: A x C x E
+//			3rd: x x C x E
+//			4th: x x C x x
+//			Result: C
+//
+//			A B C D E
+//			A B x D E = count = 4; n = 3
+//			x B x D E = i reset
+//			x B x D x
+//			x x x D x
+//"man","hen","pen","sen","len"
+//"man", x, "pen","sen","len"
+//"man", x, "pen", x, "len"
+//x, x, "pen", x, "len"
+//x, x, "pen", x, x
+
+
+	public static boolean findLoser(String[] names, int n) throws Exception 
+	{
+//	    if (names.length == 0)
+//	        throw new Exception("Please enter names");
+//	        
+//	    if (n <= 0)
+//	        throw new Exception("Please enter +ve number");
+//	        
+//	    ArrayList<String> al = new ArrayList<String>();
+//	       
+//	    
+//	    for(int i = 0; i < names.length; i++)
+//	    {
+//	        al.add(names[i]);
+//	    }
+//	    
+//	    int i = 0;
+//	    int count = al.size();
+//	    
+//	    while (count > 1)
+//	    {
+//	        i = i + (n-1);
+//	        
+//	        if (i % n == 0)
+//	        {
+//	            al.remove(i - 1);
+//	        }
+//	        
+//	        count = al.size();
+//	        
+//	        if (i > count)
+//	            i = i % count;
+//	    }
+//	    
+//	    return al.get(0);
+		
+		
+		Boolean f = null;
+		if (f)
+			return f;
+		return f;
+	}
+	
+	public void longestValidSubString(String s)
+	{
+		
 	}
 }

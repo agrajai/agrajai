@@ -3,6 +3,13 @@ package com.tgt.qa.tests.csrportal;
 public class kidsBicycles extends abstractBicycle 
 {
 
+	//@Override
+	protected void draw() 
+	{
+		super.draw();
+		System.out.println("Kids have 2 tyres though daimeter is small - Private in subclass");
+	}
+	
 	@Override
 	public void tyres() 
 	{
